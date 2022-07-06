@@ -10,6 +10,11 @@ jobs:
           - image: circleci/node:13.8.0
         steps:
           - run: "echo world"
+    print_name:
+        docker:
+          - image: circleci/node:13.8.0
+        steps:
+          - run: "echo My Name is $MY_NAME"
 
 workflows:
     welcome:
