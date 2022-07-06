@@ -1,16 +1,17 @@
 version: 2.1
-jobs:
-    print_name:
-        docker:
-          - image: circleci/node:13.8.0
-        steps:
-          - checkout
-          - run: 
-              name: "Print my name"
-              command: echo $MY_NAME
 
 workflows:
-    myname:
-        jobs:
-          - print_name
-            
+  test-env-vars:
+    jobs:
+      - build
+
+jobs:
+  build:
+    docker:
+      - image: cimg/base:2020.01
+    steps:
+      - checkout
+      - run:
+          name: "echo an env var that is part of our project"
+          command: |
+            echo $MY_NAME
